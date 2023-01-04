@@ -294,10 +294,12 @@ sortActionButton.addEventListener('click', () => {
   sortAPI.startSort(sort, fruits, comparationColor);
   if (sortKind == 'bubbleSort') {
     display(sortAPI.bubbleSort(fruits, comparationColor));
+    console.log("bubbleSort");
     sortTimeLabel.textContent = sortTime;
   } else if (sortKind == 'quickSort') 
   {
     display(sortAPI.quickSort(fruits, comparationColor));
+    console.log("quickSort");
     sortTimeLabel.textContent = sortTime;
 
   };
@@ -313,34 +315,29 @@ addActionButton.addEventListener('click', () => {
 
   const arrFruits = {};
 
-  if (document.querySelector(".kind__input").value ==="") {
-    alert('Необходимо ввести название фрукта')
-    arrFruits.kind = "";
-  } else {
+
     arrFruits.kind = document.querySelector(".kind__input").value;
-  };
-
-  if(document.querySelector(".color__input").value ==="") {
-    alert('Необходимо ввести цвет фрукта')
-    arrFruits.color = "";
-  } else {
+ 
     arrFruits.color = document.querySelector(".color__input").value;
-  };
-
-  if (isNaN(document.querySelector(".weight__input").value)) {
-    alert('Необходимо ввести значение веса');
-    arrFruits.weight = "";
-  } else {    
-    arrFruits.weight = document.querySelector(".weight__input").value;
-  };
   
-  fruits.push(arrFruits);
+   
+    arrFruits.weight = document.querySelector(".weight__input").value;
+  
+  
+  
+
+  if (!kindInput.value || !colorInput.value || !weightInput.value) {
+    alert('Заполните все поля для добавления нового фрукта');
+    return;
+  } else {
+    fruits.push(arrFruits);
+    display(fruits);
+  };
+
+  
 
 
 
 
-
-
-
-  display(fruits);
+  
 });
